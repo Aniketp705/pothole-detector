@@ -1,70 +1,64 @@
 # Pothole Detector 🕳️🚗
 
-A deep learning project designed to detect potholes in road images using Transfer Learning with **MobileNetV2**. This model helps in identifying road damages efficiently, which can be useful for road maintenance and safety systems.
+A deep learning project designed to detect potholes in road images using Transfer Learning with **MobileNetV2**. This project includes both a model training notebook and a real-time **Streamlit Web Application** for easy inference.
 
 ## 📌 Features
 
+- **Interactive Web App:** User-friendly interface built with Streamlit for real-time pothole detection.
 - **Automated Data Splitting:** Automatically splits the dataset into Training (80%) and Testing (20%) sets.
 - **Data Augmentation:** Uses `ImageDataGenerator` for rotation and flipping to improve model generalization.
 - **Transfer Learning:** Utilizes the pre-trained **MobileNetV2** model (weights from ImageNet) for feature extraction.
 - **High Accuracy:** Achieves ~93% accuracy on the test set.
 - **Visualization:** Generates a Confusion Matrix and Classification Report for performance evaluation.
-- **Inference Script:** Allows users to upload and test new images for pothole detection.
 
 ## 🛠️ Tech Stack
 
 - **Language:** Python 3
+- **Web Framework:** Streamlit
 - **Deep Learning Framework:** TensorFlow / Keras
-- **Computer Vision:** OpenCV (for image processing if needed)
+- **Computer Vision:** OpenCV, PIL
 - **Data Manipulation:** NumPy, Shutil, OS
 - **Visualization:** Matplotlib, Seaborn
 - **Machine Learning Metrics:** Scikit-learn
 
-## 📂 Dataset Structure
-
-The project expects the source dataset to be organized as follows:
+## 📂 Project Structure
 
 ```
-/content/dataset/
-    ├── plain/       # Images of normal roads
-    └── potholes/    # Images of roads with potholes
-```
-
-The script automatically processes this into:
-
-```
-/content/processed_data/
-    ├── train/
-    │   ├── plain/
-    │   └── potholes/
-    └── test/
-        ├── plain/
-        └── potholes/
+/
+├── app.py                      # Streamlit Web Application
+├── Potholes.ipynb              # Model Training Notebook
+├── pothole_detector_final.h5   # Trained Model File
+├── requirements.txt            # Project Dependencies
+├── README.md                   # Project Documentation
+└── .gitignore
 ```
 
 ## 🚀 Installation & Usage
 
 ### 1. Prerequisites
-Ensure you have the required libraries installed. You can install them via pip:
+Ensure you have Python installed. Install the required dependencies using the provided `requirements.txt`:
 
 ```bash
-pip install tensorflow numpy matplotlib seaborn scikit-learn
+pip install -r requirements.txt
 ```
 
-### 2. Running the Notebook
-1.  Clone this repository or download the `Potholes.ipynb` file.
-2.  Open the notebook in **Google Colab** or **Jupyter Notebook**.
-3.  Ensure your dataset is uploaded and the `SOURCE_PATH` variable in the notebook matches your dataset location.
-4.  Run all cells to:
-    - Split the data.
-    - Train the MobileNetV2 model.
-    - Evaluate the model.
-    - Save the trained model as `pothole_detector_final.h5`.
+### 2. Running the Web App
+To start the interactive pothole detection interface:
 
-### 3. Testing with New Images
-The notebook includes a section to upload and test custom images. It will classify the image as either:
-- **POTHOLE DETECTED 🚨** (Red Label)
-- **Road is Safe ✅** (Green Label)
+1.  Ensure you have the trained model `pothole_detector_final.h5` in the project directory. (If not, run the notebook first to generate it).
+2.  Run the Streamlit app:
+
+```bash
+streamlit run app.py
+```
+
+3.  The app will open in your browser. Upload an image to check if a pothole is detected!
+
+### 3. Training the Model (Optional)
+If you want to retrain the model or understand the training process:
+1.  Open `Potholes.ipynb` in **Google Colab** or **Jupyter Notebook**.
+2.  Follow the instructions to upload your dataset and run the cells.
+3.  The notebook will save the new model as `pothole_detector_final.h5`.
 
 ## 📊 Model Performance
 
