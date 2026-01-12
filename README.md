@@ -1,3 +1,13 @@
+---
+title: Pothole Detector
+emoji: 🛣️
+colorFrom: gray
+colorTo: red
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 # Pothole Detector 🕳️🚗
 
 A deep learning project designed to detect potholes in road images using Transfer Learning with **MobileNetV2**. This project includes both a model training notebook and a real-time **Streamlit Web Application** for easy inference.
